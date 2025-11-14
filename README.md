@@ -249,5 +249,3 @@ Jika menemukan bug atau memiliki saran, silakan buat issue atau pull request.
 ---
 
 **Selamat menggunakan AkuPayu!**
-
-Made with ❤️ by Alfi Firdaus
