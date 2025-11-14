@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AkuPayu</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-title">
+        <h1>
+          <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 2C12 2 8 6 8 12C8 18 12 22 12 22" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 2C12 2 16 6 16 12C16 18 12 22 12 22" stroke="currentColor" stroke-width="2"/>
+            <path d="M2 12H22" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          AkuPayu
+        </h1>
+        <p class="credit">created by Alfi Firdaus</p>
+      </div>
+      <div class="status-indicator" id="statusIndicator">
+        <span class="status-dot"></span>
+        <span class="status-text">Disconnected</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="form-group">
+        <label for="proxyType">Proxy Type</label>
+        <select id="proxyType" class="select-input">
+          <option value="http">HTTP</option>
+          <option value="https">HTTPS</option>
+          <option value="socks4">SOCKS4</option>
+          <option value="socks5">SOCKS5</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="proxyHost">Host/IP Address</label>
+        <input type="text" id="proxyHost" class="text-input" placeholder="127.0.0.1 or proxy.example.com">
+      </div>
+
+      <div class="form-group">
+        <label for="proxyPort">Port</label>
+        <input type="number" id="proxyPort" class="text-input" placeholder="8080">
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="useAuth" class="checkbox-input">
+          <span>Authentication Required</span>
+        </label>
+      </div>
+
+      <div id="authFields" class="auth-fields hidden">
+        <div class="form-group">
+          <label for="proxyUsername">Username</label>
+          <input type="text" id="proxyUsername" class="text-input" placeholder="Enter username">
+        </div>
+
+        <div class="form-group">
+          <label for="proxyPassword">Password</label>
+          <input type="password" id="proxyPassword" class="text-input" placeholder="Enter password">
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- User Agent Section -->
+      <div class="form-group">
+        <label for="userAgent">User Agent</label>
+        <select id="userAgent" class="select-input">
+          <option value="default">Default (Chrome)</option>
+
+          <optgroup label="Chrome - Desktop">
+            <option value="chrome-win-latest">Chrome 120 - Windows 10</option>
+            <option value="chrome-win-11">Chrome 120 - Windows 11</option>
+            <option value="chrome-mac-latest">Chrome 120 - macOS Sonoma</option>
+            <option value="chrome-mac-ventura">Chrome 120 - macOS Ventura</option>
+            <option value="chrome-linux">Chrome 120 - Linux</option>
+            <option value="chrome-old">Chrome 100 - Windows 10 (Old)</option>
+          </optgroup>
+
+          <optgroup label="Firefox - Desktop">
+            <option value="firefox-win-latest">Firefox 121 - Windows 10</option>
+            <option value="firefox-win-11">Firefox 121 - Windows 11</option>
+            <option value="firefox-mac-latest">Firefox 121 - macOS Sonoma</option>
+            <option value="firefox-linux">Firefox 121 - Linux</option>
+            <option value="firefox-old">Firefox 100 - Windows 10 (Old)</option>
+          </optgroup>
+
+          <optgroup label="Safari - Desktop & Mobile">
+            <option value="safari-mac-latest">Safari 17 - macOS Sonoma</option>
+            <option value="safari-mac-ventura">Safari 16 - macOS Ventura</option>
+            <option value="safari-ios-latest">Safari - iPhone (iOS 17)</option>
+            <option value="safari-ipad-latest">Safari - iPad (iPadOS 17)</option>
+          </optgroup>
+
+          <optgroup label="Edge - Desktop">
+            <option value="edge-win-latest">Edge 120 - Windows 10</option>
+            <option value="edge-win-11">Edge 120 - Windows 11</option>
+            <option value="edge-mac">Edge 120 - macOS</option>
+          </optgroup>
+
+          <optgroup label="Mobile - Android">
+            <option value="android-chrome-latest">Chrome - Android 13</option>
+            <option value="android-chrome-12">Chrome - Android 12</option>
+            <option value="android-samsung">Samsung Internet - Android 13</option>
+            <option value="android-firefox">Firefox - Android 13</option>
+          </optgroup>
+
+          <optgroup label="Mobile - iOS">
+            <option value="ios-chrome">Chrome - iPhone (iOS 17)</option>
+            <option value="ios-firefox">Firefox - iPhone (iOS 17)</option>
+          </optgroup>
+
+          <optgroup label="Opera & Other Browsers">
+            <option value="opera-windows">Opera 105 - Windows 10</option>
+            <option value="opera-mac">Opera 105 - macOS</option>
+            <option value="brave-windows">Brave 1.60 - Windows 10</option>
+            <option value="vivaldi-windows">Vivaldi 6.4 - Windows 10</option>
+          </optgroup>
+
+          <optgroup label="Bots & Crawlers">
+            <option value="googlebot">Googlebot</option>
+            <option value="bingbot">Bingbot</option>
+          </optgroup>
+
+          <option value="custom">✏️ Custom (Manual Input)</option>
+        </select>
+      </div>
+
+      <div id="customUserAgentField" class="form-group hidden">
+        <label for="customUserAgent">Custom User Agent</label>
+        <textarea id="customUserAgent" class="text-input custom-ua" rows="3" placeholder="Enter custom user agent string..."></textarea>
+      </div>
+
+      <!-- WebRTC Section -->
+      <div class="form-group">
+        <label class="toggle-label">
+          <span class="toggle-info">
+            <span class="toggle-title">WebRTC Protection</span>
+            <span class="toggle-description">Prevent IP leak through WebRTC</span>
+          </span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="webrtcProtection" class="toggle-input">
+            <span class="toggle-slider"></span>
+          </label>
+        </label>
+      </div>
+
+      <!-- Fingerprint Protection Section -->
+      <div class="form-group">
+        <label class="toggle-label">
+          <span class="toggle-info">
+            <span class="toggle-title">Fingerprint Protection</span>
+            <span class="toggle-description">Block browser fingerprinting tracking</span>
+          </span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="fingerprintProtection" class="toggle-input">
+            <span class="toggle-slider"></span>
+          </label>
+        </label>
+      </div>
+
+      <div class="button-group">
+        <button id="connectBtn" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12L10 17L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Connect
+        </button>
+        <button id="disconnectBtn" class="btn btn-secondary" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Disconnect
+        </button>
+      </div>
+
+      <div id="message" class="message hidden"></div>
+
+      <div class="divider"></div>
+
+      <div class="saved-proxies">
+        <h3>Saved Proxies</h3>
+        <div id="proxyList" class="proxy-list">
+          <p class="empty-state">No saved proxies</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <button id="saveProxyBtn" class="btn btn-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16L21 8V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M7 3V8H15V3" stroke="currentColor" stroke-width="2"/>
+          <path d="M7 21V13H17V21" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        Save Current Proxy
+      </button>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
