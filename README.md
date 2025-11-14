@@ -22,14 +22,13 @@ Chrome extension elegan untuk mengelola dan terhubung ke berbagai server proxy t
 ## Struktur File
 
 ```
-TheKraken1/
+AkuPayu/
 ├── manifest.json           # Konfigurasi extension
 ├── popup.html             # Antarmuka pengguna
 ├── popup.js               # Logic UI dan interaksi
 ├── background.js          # Service worker untuk proxy management
 ├── styles.css             # Styling elegan
 ├── icons/                 # Icon extension
-│   └── icon-generator.html # Generator untuk membuat icons
 └── README.md             # Dokumentasi ini
 ```
 
@@ -51,7 +50,7 @@ Sebelum menginstall extension, Anda perlu membuat icon:
 1. Buka Chrome dan ketik `chrome://extensions/` di address bar
 2. Aktifkan "Developer mode" (toggle di pojok kanan atas)
 3. Klik "Load unpacked"
-4. Pilih folder `TheKraken1`
+4. Pilih folder `Extension`
 5. Extension akan muncul di toolbar Chrome
 
 ## Cara Menggunakan
