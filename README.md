@@ -32,27 +32,6 @@ AkuPayu/
 └── README.md             # Dokumentasi ini
 ```
 
-## Instalasi
-
-### 1. Generate Icons
-
-Sebelum menginstall extension, Anda perlu membuat icon:
-
-1. Buka file `icons/icon-generator.html` di browser
-2. Klik tombol "Generate and Download Icons"
-3. Icons akan otomatis ter-download (icon16.png, icon32.png, icon48.png, icon128.png)
-4. Pindahkan semua icon ke folder `icons/`
-
-**Alternatif**: Anda bisa menggunakan icon sendiri atau membuat icon menggunakan tools desain favorit Anda. Pastikan ukurannya 16x16, 32x32, 48x48, dan 128x128 pixels.
-
-### 2. Load Extension ke Chrome
-
-1. Buka Chrome dan ketik `chrome://extensions/` di address bar
-2. Aktifkan "Developer mode" (toggle di pojok kanan atas)
-3. Klik "Load unpacked"
-4. Pilih folder `Extension`
-5. Extension akan muncul di toolbar Chrome
-
 ## Cara Menggunakan
 
 ### Koneksi Basic
